@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
@@ -16,7 +16,7 @@ public class Manager_XML : MonoBehaviour
     //private const string 
     private Dictionary<string, XML_Text> textDic = new Dictionary<string, XML_Text>();
 
-    public eLanguage language = eLanguage.KR; // -> ÀÌºÎºĞ ¸Å´ÏÀú´ÜÀ¸·Î ¿Å°Ü¾ßÇÔ
+    public eLanguage language = eLanguage.KR; // -> ì´ë¶€ë¶„ ë§¤ë‹ˆì €ë‹¨ìœ¼ë¡œ ì˜®ê²¨ì•¼í•¨
 
     [SerializeField] private TMP_Dropdown dropdown;
 
@@ -49,31 +49,35 @@ public class Manager_XML : MonoBehaviour
         hello.text = text;
     }
 
+    /// <summary>
+    /// í•œê¸€ í…ŒìŠ¤íŠ¸
+    /// </summary>
+    /// <param name="dropdown"></param>
     private void ChangeLangue(TMP_Dropdown dropdown)
     {
         Debug.Log("dropdown.value : " + dropdown.value);
         switch(dropdown.value)
         {
             case (int)eLanguage.KR:
-                Debug.Log("ÇÑ±Û");
+                Debug.Log("í•œê¸€");
                 language = eLanguage.KR;
                 OnLanguageChagned?.Invoke((int)eLanguage.KR);
                 break;
 
             case (int)eLanguage.EN:
-                Debug.Log("¿µ¾î");
+                Debug.Log("ì˜ì–´");
                 language = eLanguage.EN;
                 OnLanguageChagned?.Invoke((int)eLanguage.EN);
                 break;
 
             case (int)eLanguage.JP:
-                Debug.Log("ÀÏ¾î");
+                Debug.Log("ì¼ì–´");
                 language = eLanguage.JP;
                 OnLanguageChagned?.Invoke((int)eLanguage.JP);
                 break;
 
             case (int)eLanguage.CH:
-                Debug.Log("Áß±¹¾î");
+                Debug.Log("ì¤‘êµ­ì–´");
                 language = eLanguage.CH;
                 OnLanguageChagned?.Invoke((int)eLanguage.CH);
                 break;
@@ -82,7 +86,7 @@ public class Manager_XML : MonoBehaviour
 
 
     /// <summary>
-    /// ¸ğµç Xmlµ¥ÀÌÅÍ ·Îµå
+    /// ëª¨ë“  Xmlë°ì´í„° ë¡œë“œ
     /// </summary>
     private void LoadXmlFile(string fileName)
     {
@@ -124,14 +128,14 @@ public class Manager_XML : MonoBehaviour
 
 
     /// <summary>
-    /// ½ÃÄö½º »Ì¾Æ³»±â
+    /// ì‹œí€€ìŠ¤ ë½‘ì•„ë‚´ê¸°
     /// </summary>
     /// <param name="xmlFile"></param>
     /// <returns></returns>
     /*
     List<SequenceInfo> LoadSequenceXml(string str)
     {
-        TextAsset textAsset = (TextAsset)Resources.Load(Cons.Path_Xml + str + "Info"); //¹ÛÀ¸·Î »©ÁÜ
+        TextAsset textAsset = (TextAsset)Resources.Load(Cons.Path_Xml + str + "Info"); //ë°–ìœ¼ë¡œ ë¹¼ì¤Œ
         //Debug.Log(textAsset);
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.LoadXml(textAsset.text);
@@ -155,9 +159,9 @@ public class Manager_XML : MonoBehaviour
             if (node.SelectSingleNode("UI_Type") != null) sequenceInfo.UI_Type = Util.String2Enum<eUIType>(node.SelectSingleNode("UI_Type").InnerText);
             if (node.SelectSingleNode("UI_AutoClose") != null) sequenceInfo.UI_AutoClose = bool.Parse(node.SelectSingleNode("UI_AutoClose").InnerText);
             if (node.SelectSingleNode("UI_AutoSequence") != null) sequenceInfo.UI_AutoSequence = bool.Parse(node.SelectSingleNode("UI_AutoSequence").InnerText);
-            if (node.SelectSingleNode("UI_Action") != null) sequenceInfo.UI_Action = node.SelectSingleNode("UI_Action").InnerText;//Çàµ¿ÇÒ ¾×¼Ç
-            if (node.SelectSingleNode("UI_Animation") != null) sequenceInfo.UI_Animation = node.SelectSingleNode("UI_Animation").InnerText;//UI¾Ö´Ï¸ŞÀÌ¼Ç hsjoo Ãß°¡
-            if (node.SelectSingleNode("UI_MirrorView") != null) sequenceInfo.UI_MirrorView = node.SelectSingleNode("UI_MirrorView").InnerText;//º¸¿©Áú ¹Ì·¯ºä
+            if (node.SelectSingleNode("UI_Action") != null) sequenceInfo.UI_Action = node.SelectSingleNode("UI_Action").InnerText;//í–‰ë™í•  ì•¡ì…˜
+            if (node.SelectSingleNode("UI_Animation") != null) sequenceInfo.UI_Animation = node.SelectSingleNode("UI_Animation").InnerText;//UIì• ë‹ˆë©”ì´ì…˜ hsjoo ì¶”ê°€
+            if (node.SelectSingleNode("UI_MirrorView") != null) sequenceInfo.UI_MirrorView = node.SelectSingleNode("UI_MirrorView").InnerText;//ë³´ì—¬ì§ˆ ë¯¸ëŸ¬ë·°
             if (node.SelectSingleNode("UI_DescriptionImage") != null) sequenceInfo.UI_DescriptionImage = node.SelectSingleNode("UI_DescriptionImage").InnerText;
             #endregion
 
@@ -235,7 +239,7 @@ public class Manager_XML : MonoBehaviour
     }
 
     /// <summary>
-    /// ¾ğ¾î¿¡ µû¸¥ ÅØ½ºÆ® ¹ñ¾îÁÜ
+    /// ì–¸ì–´ì— ë”°ë¥¸ í…ìŠ¤íŠ¸ ë±‰ì–´ì¤Œ
     /// </summary>
     /// <param name="Idx"></param>
     /// <returns></returns>
@@ -252,16 +256,16 @@ public class Manager_XML : MonoBehaviour
                 case eLanguage.JP: text = xmlText.JP; break;
                 case eLanguage.CH: text = xmlText.CH; break;
             }
-            if (string.IsNullOrEmpty(text)) //ÀÎµ¦½º´Â ÀÖÁö¸¸ ÇØ´ç ¾ğ¾îÀÇ ÅØ½ºÆ®°¡ ¾øÀ¸¸é ÀÎµ¦½º¹øÈ£ ¹İÈ¯
+            if (string.IsNullOrEmpty(text)) //ì¸ë±ìŠ¤ëŠ” ìˆì§€ë§Œ í•´ë‹¹ ì–¸ì–´ì˜ í…ìŠ¤íŠ¸ê°€ ì—†ìœ¼ë©´ ì¸ë±ìŠ¤ë²ˆí˜¸ ë°˜í™˜
             {
                 return Idx;
             }
-            else //ÀÎµ¦½ºµµ ÀÖ°í ÇØ´ç ¾ğ¾îÀÇ ÅØ½ºÆ®°¡ ÀÖÀ¸¸é ÅØ½ºÆ® ¹İÈ¯
+            else //ì¸ë±ìŠ¤ë„ ìˆê³  í•´ë‹¹ ì–¸ì–´ì˜ í…ìŠ¤íŠ¸ê°€ ìˆìœ¼ë©´ í…ìŠ¤íŠ¸ ë°˜í™˜
             {
                 return text;
             }
         }
-        else //ÀÎµ¦½º°¡ ¾øÀ¸¸é ÀÎµ¦½º¹øÈ£ ¹İÈ¯
+        else //ì¸ë±ìŠ¤ê°€ ì—†ìœ¼ë©´ ì¸ë±ìŠ¤ë²ˆí˜¸ ë°˜í™˜
         {
             return Idx;
         }
@@ -269,59 +273,59 @@ public class Manager_XML : MonoBehaviour
 }
 
 /// <summary>
-/// ÇÕÄ¡ºÎ Á¤º¸
+/// í•©ì¹˜ë¶€ ì •ë³´
 /// </summary>
 /*
 [Serializable]
 public class SequenceInfo : BaseInfo
 {
     #region Base
-    public int Idx; //ÀÎµ¦½º
-    public eType Type; //¾î¶² Å¸ÀÔÀÇ Çàµ¿ ÇÒ °ÍÀÎÁö
+    public int Idx; //ì¸ë±ìŠ¤
+    public eType Type; //ì–´ë–¤ íƒ€ì…ì˜ í–‰ë™ í•  ê²ƒì¸ì§€
     #endregion
 
     #region UI
-    public string UI_Text; //UIÅØ½ºÆ®
-    public string AnnounceRes; //¾Æ³ª¿î¼­ À½¼º
-    public string DescriptionAnnounce; //¾Æ³ª¿î¼­ À½¼º
-    public string UI_Tip; //UITipÅØ½ºÆ®
-    public string UI_Image; //UIÀÌ¹ÌÁö
-    public string UI_DescriptionImage; //UIÀÌ¹ÌÁö
-    public eUIType UI_Type; //UIÅ¸ÀÔ
-    public bool UI_AutoClose; //UI¿ÀÅäÅ¬·ÎÁî ¿©ºÎ
-    public bool UI_AutoSequence; //UI¿ÀÅä½ÃÄö½ºÈå¸§ ¿©ºÎ
-    public string UI_Action; //Çàµ¿ÇÒ ¾×¼Ç
-    public string UI_Animation; //¾Ö´Ï¸ŞÀÌ¼Ç
-    public string UI_MirrorView;//º¸¿©Áú ¹Ì·¯ºä
+    public string UI_Text; //UIí…ìŠ¤íŠ¸
+    public string AnnounceRes; //ì•„ë‚˜ìš´ì„œ ìŒì„±
+    public string DescriptionAnnounce; //ì•„ë‚˜ìš´ì„œ ìŒì„±
+    public string UI_Tip; //UITipí…ìŠ¤íŠ¸
+    public string UI_Image; //UIì´ë¯¸ì§€
+    public string UI_DescriptionImage; //UIì´ë¯¸ì§€
+    public eUIType UI_Type; //UIíƒ€ì…
+    public bool UI_AutoClose; //UIì˜¤í† í´ë¡œì¦ˆ ì—¬ë¶€
+    public bool UI_AutoSequence; //UIì˜¤í† ì‹œí€€ìŠ¤íë¦„ ì—¬ë¶€
+    public string UI_Action; //í–‰ë™í•  ì•¡ì…˜
+    public string UI_Animation; //ì• ë‹ˆë©”ì´ì…˜
+    public string UI_MirrorView;//ë³´ì—¬ì§ˆ ë¯¸ëŸ¬ë·°
     #endregion
 
     #region Move
-    public string Move_Position; //ÀÌµ¿ÇÒ Æ÷Áö¼Ç
-    public string Move_PositionHMI; //HMIÀÌµ¿ÇÒ Æ÷Áö¼Ç
-    public string Move_StartUISound; //ÀÌµ¿ÇÒ¶§ ³ª´Â »ç¿îµå
-    public string Move_ArriveSound; //ÀÌµ¿ µµÂø½Ã ³ª´Â »ç¿îµå
+    public string Move_Position; //ì´ë™í•  í¬ì§€ì…˜
+    public string Move_PositionHMI; //HMIì´ë™í•  í¬ì§€ì…˜
+    public string Move_StartUISound; //ì´ë™í• ë•Œ ë‚˜ëŠ” ì‚¬ìš´ë“œ
+    public string Move_ArriveSound; //ì´ë™ ë„ì°©ì‹œ ë‚˜ëŠ” ì‚¬ìš´ë“œ
     #endregion
 
     #region View
-    public float View_Time; //¹Ù¶óº¸´Â ½Ã°£
-    public string View_Target; //¹Ù¶óº¼ ¿ÀºêÁ§Æ®
-    public eViewType View_Type; //ºäÅ¸ÀÔ
-    public eLightType LightType; //¶óÀÌÆ® Å¸ÀÔ
+    public float View_Time; //ë°”ë¼ë³´ëŠ” ì‹œê°„
+    public string View_Target; //ë°”ë¼ë³¼ ì˜¤ë¸Œì íŠ¸
+    public eViewType View_Type; //ë·°íƒ€ì…
+    public eLightType LightType; //ë¼ì´íŠ¸ íƒ€ì…
     public string MirrorViewName;
-    public string View_Pivot; //ºäÇÇº¿
+    public string View_Pivot; //ë·°í”¼ë´‡
     #endregion
 
     #region Button
-    public string Button_Name; //¹öÆ° ÀÌ¸§
+    public string Button_Name; //ë²„íŠ¼ ì´ë¦„
     #endregion
 
     #region Interact
-    public string Interact_Target; //¼ÕÀ» °®´Ù ´òÀ»¶§ ¾Ö´Ï¸ŞÀÌ¼ÇÀÌ ÀÛµ¿ÇÒ ´ë»ó
-    public string Anim_Param;// ¾Ö´Ï¸ŞÀÌ¼Ç »óÅÂ ÆÄ¶ó¹ÌÅÍ ÀÌ¸§
+    public string Interact_Target; //ì†ì„ ê°–ë‹¤ ëŒ”ì„ë•Œ ì• ë‹ˆë©”ì´ì…˜ì´ ì‘ë™í•  ëŒ€ìƒ
+    public string Anim_Param;// ì• ë‹ˆë©”ì´ì…˜ ìƒíƒœ íŒŒë¼ë¯¸í„° ì´ë¦„
     #endregion
 
     #region Grabbable
-    public string Grabbable; //¼ÕÀ» °®´Ù ´òÀ»¶§ ¾Ö´Ï¸ŞÀÌ¼ÇÀÌ ÀÛµ¿ÇÒ ´ë»ó
+    public string Grabbable; //ì†ì„ ê°–ë‹¤ ëŒ”ì„ë•Œ ì• ë‹ˆë©”ì´ì…˜ì´ ì‘ë™í•  ëŒ€ìƒ
     #endregion
 
     #region Sound
@@ -332,7 +336,7 @@ public class SequenceInfo : BaseInfo
 
 
 [Serializable]
-/// ±âº»ÅØ½ºÆ®
+/// ê¸°ë³¸í…ìŠ¤íŠ¸
 struct XML_Text
 {
     public string Idx;
@@ -373,16 +377,16 @@ public enum eLanguage
 
 
 /*
-<Idx></Idx> <!--ÀÎµ¦½º-->
-<Type></Type> <!--Å¸ÀÔ-->
-<Move_Position></Move_Position> <!--ÀÌµ¿Æ÷Áö¼Ç-->
-<Move_StartUISound></Move_StartUISound> <!--ÀÌµ¿½Ã »ç¿îµå-->
-<Move_ArriveSound></Move_ArriveSound> <!--ÀÌµ¿µµÂø½Ã »ç¿îµå-->
-<View_Time></View_Time> <!--¾î¶² ¹°Ã¼ È®ÀÎ ÇÒ  ¶§ ¹Ù¶óº¸´Â ½Ã°£-->
-<View_Target></View_Target> <!--¹Ù¶óº¸´Â ¹°Ã¼-->
-<UI_Text></UI_Text> <!--UI ÅØ½ºÆ®-->
-<UI_Type></UI_Type> <!--UI Å¸ÀÔ-->
-<UI_AutoClose></UI_AutoClose> <!--UI ÀÚµ¿ ´İÈúÁö ¿©ºÎ-->
-<UI_AutoSequence></UI_AutoSequence> <!--UI ´İÈú ¶§ ½ÃÄö½º ³Ñ±æÁö ¿©ºÎ-->
-<AlarmLight></AlarmLight> <!--¾Ë¶÷ ¿ï¸± Áö ¿©ºÎ-->
+<Idx></Idx> <!--ì¸ë±ìŠ¤-->
+<Type></Type> <!--íƒ€ì…-->
+<Move_Position></Move_Position> <!--ì´ë™í¬ì§€ì…˜-->
+<Move_StartUISound></Move_StartUISound> <!--ì´ë™ì‹œ ì‚¬ìš´ë“œ-->
+<Move_ArriveSound></Move_ArriveSound> <!--ì´ë™ë„ì°©ì‹œ ì‚¬ìš´ë“œ-->
+<View_Time></View_Time> <!--ì–´ë–¤ ë¬¼ì²´ í™•ì¸ í•   ë•Œ ë°”ë¼ë³´ëŠ” ì‹œê°„-->
+<View_Target></View_Target> <!--ë°”ë¼ë³´ëŠ” ë¬¼ì²´-->
+<UI_Text></UI_Text> <!--UI í…ìŠ¤íŠ¸-->
+<UI_Type></UI_Type> <!--UI íƒ€ì…-->
+<UI_AutoClose></UI_AutoClose> <!--UI ìë™ ë‹«íì§€ ì—¬ë¶€-->
+<UI_AutoSequence></UI_AutoSequence> <!--UI ë‹«í ë•Œ ì‹œí€€ìŠ¤ ë„˜ê¸¸ì§€ ì—¬ë¶€-->
+<AlarmLight></AlarmLight> <!--ì•ŒëŒ ìš¸ë¦´ ì§€ ì—¬ë¶€-->
  */
