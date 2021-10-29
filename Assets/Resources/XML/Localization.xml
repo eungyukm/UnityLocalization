@@ -1,10 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Localization>
   <Text>
-    <Idx>00000</Idx>
-    <KR>AA</KR>
-    <EN>BB</EN>
-    <JP>DD</JP>
-    <CH />
+    <Idx>0</Idx>
+    <KR>AAA</KR>
+    <EN>BBB</EN>
+    <JP>CCC</JP>
+    <CH>DDD</CH>
+  </Text>
+  <Text>
+    <Idx>1</Idx>
+    <KR>EEE</KR>
+    <EN>GGG</EN>
+    <JP>HHH</JP>
+    <CH>JJJ</CH>
+  </Text>
+  <Text>
+    <Idx>2</Idx>
+    <KR>asdas</KR>
+    <EN>asdas</EN>
+    <JP>asdas</JP>
+    <CH>sdad</CH>
+  </Text>
+  <Text>
+    <Idx>3</Idx>
+    <KR>12312</KR>
+    <EN>d12d</EN>
+    <JP>213waed</JP>
+    <CH>qwe122</CH>
+  </Text>
+  <Text>
+    <Idx>4</Idx>
+    <KR>21312</KR>
+    <EN>3231</EN>
+    <JP>123</JP>
+    <CH>12e</CH>
+  </Text>
+  <Text>
+    <Idx>5</Idx>
+    <KR>312da</KR>
+    <EN>qweq</EN>
+    <JP>3</JP>
+    <CH>12sda</CH>
   </Text>
 </Localization>

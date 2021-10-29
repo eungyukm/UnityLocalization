@@ -6,7 +6,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
 
-public class Manager_XML : MonoBehaviour
+public class XMLManager : MonoBehaviour
 {
     private const string xmlPath = "XML/Localization";
     private const string fileName = "Localization";
@@ -22,17 +22,9 @@ public class Manager_XML : MonoBehaviour
 
     public UnityAction<int> OnLanguageChagned;
 
-    
-    [SerializeField] private TextMeshProUGUI hello;
-
     private void Awake()
     {
         LoadXmlFile(fileName);
-    }
-
-    private void OnEnable()
-    {
-        OnLanguageChagned += ChangeText;
     }
 
     private void Start()
@@ -40,13 +32,6 @@ public class Manager_XML : MonoBehaviour
         dropdown.onValueChanged.AddListener(delegate {
             ChangeLangue(dropdown);
         });
-    }
-
-    private void ChangeText(int idx)
-    {
-        string text = GetText("00000");
-        Debug.Log("Search Text : " + text);
-        hello.text = text;
     }
 
     /// <summary>
@@ -86,7 +71,7 @@ public class Manager_XML : MonoBehaviour
 
 
     /// <summary>
-    /// 모든 Xml데이터 로드
+    /// Xml File 로드
     /// </summary>
     private void LoadXmlFile(string fileName)
     {
@@ -126,12 +111,6 @@ public class Manager_XML : MonoBehaviour
         return xmlNodeList;
     }
 
-
-    /// <summary>
-    /// 시퀀스 뽑아내기
-    /// </summary>
-    /// <param name="xmlFile"></param>
-    /// <returns></returns>
     /*
     List<SequenceInfo> LoadSequenceXml(string str)
     {
@@ -231,7 +210,7 @@ public class Manager_XML : MonoBehaviour
             if (node.SelectSingleNode("CH") != null) languageInfo.CH = node.SelectSingleNode("CH").InnerText;
             #endregion
 
-            Debug.Log("ide : " + Idx);
+            Debug.Log("idex Count : " + Idx);
             textDic.Add(Idx, languageInfo);
         }
 
@@ -271,68 +250,6 @@ public class Manager_XML : MonoBehaviour
         }
     }
 }
-
-/// <summary>
-/// 합치부 정보
-/// </summary>
-/*
-[Serializable]
-public class SequenceInfo : BaseInfo
-{
-    #region Base
-    public int Idx; //인덱스
-    public eType Type; //어떤 타입의 행동 할 것인지
-    #endregion
-
-    #region UI
-    public string UI_Text; //UI텍스트
-    public string AnnounceRes; //아나운서 음성
-    public string DescriptionAnnounce; //아나운서 음성
-    public string UI_Tip; //UITip텍스트
-    public string UI_Image; //UI이미지
-    public string UI_DescriptionImage; //UI이미지
-    public eUIType UI_Type; //UI타입
-    public bool UI_AutoClose; //UI오토클로즈 여부
-    public bool UI_AutoSequence; //UI오토시퀀스흐름 여부
-    public string UI_Action; //행동할 액션
-    public string UI_Animation; //애니메이션
-    public string UI_MirrorView;//보여질 미러뷰
-    #endregion
-
-    #region Move
-    public string Move_Position; //이동할 포지션
-    public string Move_PositionHMI; //HMI이동할 포지션
-    public string Move_StartUISound; //이동할때 나는 사운드
-    public string Move_ArriveSound; //이동 도착시 나는 사운드
-    #endregion
-
-    #region View
-    public float View_Time; //바라보는 시간
-    public string View_Target; //바라볼 오브젝트
-    public eViewType View_Type; //뷰타입
-    public eLightType LightType; //라이트 타입
-    public string MirrorViewName;
-    public string View_Pivot; //뷰피봇
-    #endregion
-
-    #region Button
-    public string Button_Name; //버튼 이름
-    #endregion
-
-    #region Interact
-    public string Interact_Target; //손을 갖다 댔을때 애니메이션이 작동할 대상
-    public string Anim_Param;// 애니메이션 상태 파라미터 이름
-    #endregion
-
-    #region Grabbable
-    public string Grabbable; //손을 갖다 댔을때 애니메이션이 작동할 대상
-    #endregion
-
-    #region Sound
-    public string SoundA;
-    #endregion
-}
-*/
 
 
 [Serializable]
