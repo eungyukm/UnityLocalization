@@ -8,7 +8,11 @@ using UnityEngine.Events;
 
 public class Manager_XML : MonoBehaviour
 {
-    private const string xmlPath = "XML/XML_Text";
+    private const string xmlPath = "XML/Localization";
+    private const string fileName = "Localization";
+    private const string rootNodeName = "Localization";
+    private const string childNodeName = "Text";
+
     //private const string 
     private Dictionary<string, XML_Text> textDic = new Dictionary<string, XML_Text>();
 
@@ -23,7 +27,7 @@ public class Manager_XML : MonoBehaviour
 
     private void Awake()
     {
-        LoadXmlFile("XML_Text");
+        LoadXmlFile(fileName);
     }
 
     private void OnEnable()
@@ -90,7 +94,7 @@ public class Manager_XML : MonoBehaviour
         else
         {
             //Debug.Log(xmlTest.ToString());
-            XmlNodeList xmlNodeList = GetXmlNodeList(xmlTextAsset.text, "XML_Text", "Text");
+            XmlNodeList xmlNodeList = GetXmlNodeList(xmlTextAsset.text, rootNodeName, childNodeName);
 
             if (xmlNodeList == null)
             {
@@ -205,7 +209,7 @@ public class Manager_XML : MonoBehaviour
 
     private Dictionary<string, XML_Text> LoadXMLText(string xmlFile)
     {
-        XmlNodeList nodeList = GetXmlNodeList(xmlFile, "XML_Text", "Text");
+        XmlNodeList nodeList = GetXmlNodeList(xmlFile, rootNodeName, childNodeName);
         Dictionary<string, XML_Text> textDic = new Dictionary<string, XML_Text>();
         string Idx = string.Empty;
         foreach (XmlNode node in nodeList)
@@ -262,143 +266,7 @@ public class Manager_XML : MonoBehaviour
             return Idx;
         }
     }
-
-    #region 미사용
-
-    /// <summary>
-    /// 테스트용..
-    /// </summary>
-    public void CreateXmlTest()
-    {
-        XmlDocument xmlDoc = new XmlDocument();
-
-        // Xml을 선언한다(xml의 버전과 인코딩 방식을 정해준다.)
-        xmlDoc.AppendChild(xmlDoc.CreateXmlDeclaration("1.0", "utf-8", "yes"));
-
-        //루트노드에 시퀀스가 가장 기준이 되고 그 시퀀스에 맞춰서 행동패턴 들어감
-
-
-        // 루트 노드 생성
-        XmlNode root = xmlDoc.CreateNode(XmlNodeType.Element, "ScenarioInfo", string.Empty);
-        xmlDoc.AppendChild(root);
-
-        //XmlNode child2 = xmlDoc.CreateNode(XmlNodeType.Element, "Character2", string.Empty);
-        //root.AppendChild(child2);
-
-        //// 자식 노드 생성
-        //XmlNode child = xmlDoc.CreateNode(XmlNodeType.Element, "Character", string.Empty);
-        //root.AppendChild(child);
-
-        //// 자식 노드에 들어갈 속성 생성
-        //XmlElement name = xmlDoc.CreateElement("이름");
-        ////name.SetAttribute("위로1", "up");
-        ////name.SetAttribute("위로2", "up");
-        ////name.SetAttribute("위로3", "up");
-        //name.InnerText = "지수";
-        //child.AppendChild(name);
-
-        //name = xmlDoc.CreateElement("나이");
-        //name.InnerText = "30";
-        //child.AppendChild(name);
-
-        //name = xmlDoc.CreateElement("주소");
-        //name.InnerText = "수원시";
-        //child.AppendChild(name);
-
-        // 자식 노드 생성
-        XmlNode child = xmlDoc.CreateNode(XmlNodeType.Element, "Character", string.Empty);
-        root.AppendChild(child);
-
-        // 자식 노드에 들어갈 속성 생성
-        XmlElement name = xmlDoc.CreateElement("이름");
-        name.InnerText = "지수2";
-        child.AppendChild(name);
-
-        XmlElement lv = xmlDoc.CreateElement("나이");
-        lv.InnerText = "302";
-        child.AppendChild(lv);
-
-        XmlElement exp = xmlDoc.CreateElement("주소");
-        exp.InnerText = "수원시2";
-        child.AppendChild(exp);
-
-        XmlNode child2 = xmlDoc.CreateNode(XmlNodeType.Element, "Character", string.Empty);
-        root.AppendChild(child2);
-        // 자식 노드에 들어갈 속성 생성
-        XmlElement name2 = xmlDoc.CreateElement("이름");
-        name2.InnerText = "지수2";
-        child2.AppendChild(name2);
-
-        XmlElement lv2 = xmlDoc.CreateElement("나이");
-        lv2.InnerText = "302";
-        child2.AppendChild(lv2);
-
-        XmlElement exp2 = xmlDoc.CreateElement("주소");
-        exp2.InnerText = "수원시2";
-        child2.AppendChild(exp2);
-
-        xmlDoc.Save("./Assets/Resources/Character2.xml");
-    }
-
-    public void CreateXml()
-    {
-        XmlDocument xmlDoc = new XmlDocument();
-
-        // Xml을 선언한다(xml의 버전과 인코딩 방식을 정해준다.)
-        xmlDoc.AppendChild(xmlDoc.CreateXmlDeclaration("1.0", "utf-8", "yes"));
-
-        //루트노드에 시퀀스가 가장 기준이 되고 그 시퀀스에 맞춰서 행동패턴 들어감
-
-
-        // 루트 노드 생성
-        XmlNode root = xmlDoc.CreateNode(XmlNodeType.Element, "CharacterInfo", string.Empty);
-        xmlDoc.AppendChild(root);
-
-        // 자식 노드 생성
-        XmlNode child = xmlDoc.CreateNode(XmlNodeType.Element, "Character", string.Empty);
-        root.AppendChild(child);
-
-        // 자식 노드에 들어갈 속성 생성
-        XmlElement name = xmlDoc.CreateElement("Name");
-        name.InnerText = "wergia";
-        child.AppendChild(name);
-
-        XmlElement lv = xmlDoc.CreateElement("Level");
-        lv.InnerText = "1";
-        child.AppendChild(lv);
-
-        XmlElement exp = xmlDoc.CreateElement("Experience");
-        exp.InnerText = "45";
-        child.AppendChild(exp);
-
-        xmlDoc.Save("./Assets/Resources/Character.xml");
-    }
-
-    public void LoadXml()
-    {
-        TextAsset textAsset = (TextAsset)Resources.Load("Character");
-        Debug.Log(textAsset);
-        XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.LoadXml(textAsset.text);
-
-        XmlNodeList nodes = xmlDoc.SelectNodes("CharacterInfo/Character");
-
-        foreach (XmlNode node in nodes)
-        {
-            Debug.Log("Name :: " + node.SelectSingleNode("Name").InnerText);
-            Debug.Log("Level :: " + node.SelectSingleNode("Level").InnerText);
-            Debug.Log("Exp :: " + node.SelectSingleNode("Experience").InnerText);
-        }
-    }
-
-    #endregion
 }
-
-
-//public class BaseInfo
-//{
-
-//}
 
 /// <summary>
 /// 합치부 정보
