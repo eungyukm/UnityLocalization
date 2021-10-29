@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<XML_Text xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  
+  <!--00000 ~ 09999 기본텍스트-->
+  <Text>
+    <Idx>00000</Idx>
+    <KR>Hello</KR>
+    <EN>HI!!</EN>
+    <JP>FDS</JP>
+    <CH>QQ</CH>
+  </Text>
+  
+  
+  
+	<!--테스트-->
+  <Text>
+    <Idx>00001</Idx>
+    <KR>AAA</KR>
+    <EN>BBB</EN>
+    <JP>CCC</JP>
+    <CH>DDD</CH>
+  </Text>
+  
+</XML_Text>
