@@ -8,7 +8,7 @@ namespace LocalizationFro
 {
     public class TMP_Text_Setter : MonoBehaviour
     {
-        [SerializeField] string index;
+        [SerializeField] private string index;
 
         private TextMeshProUGUI text;
 

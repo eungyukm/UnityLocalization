@@ -5,7 +5,7 @@ using TMPro;
 
 namespace LocalizationFro
 {
-    public class TMP_Setter_Array : MonoBehaviour
+    public class TMP_Text_Setter_Array : MonoBehaviour
     {
         [SerializeField] string[] indexArray;
 
