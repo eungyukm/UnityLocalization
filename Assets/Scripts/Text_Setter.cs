@@ -1,25 +1,24 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using System;
+using UnityEngine.UI;
 
 namespace LocalizationFro
 {
-    public class TMP_Text_Setter : MonoBehaviour
+    public class Text_Setter : MonoBehaviour
     {
         [SerializeField] string index;
 
-        private TextMeshProUGUI text;
+        private Text text;
 
         private void Awake()
         {
-            text = GetComponent<TextMeshProUGUI>();
+            text = GetComponent<Text>();
         }
 
         private void OnEnable()
         {
-            if(XMLManager.Instance != null)
+            if (XMLManager.Instance != null)
             {
                 XMLManager.Instance.OnLanguageChagned += SetText;
             }
@@ -27,7 +26,7 @@ namespace LocalizationFro
 
         private void OnDisable()
         {
-            if(XMLManager.Instance != null)
+            if (XMLManager.Instance != null)
             {
                 XMLManager.Instance.OnLanguageChagned -= SetText;
             }
