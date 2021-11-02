@@ -5,8 +5,8 @@ using LocalizationFro;
 
 public class TextControllerDemo : MonoBehaviour
 {
-    [SerializeField] private TMP_Setter_Array tmp_Setter_Array1;
-    [SerializeField] private TMP_Setter_Array tmp_Setter_Array2;
+    [SerializeField] private TMP_Text_Setter_Array tmp_Setter_Array1;
+    [SerializeField] private TMP_Text_Setter_Array tmp_Setter_Array2;
 
     [SerializeField] private Text_Setter_Array text_Setter1;
     [SerializeField] private Text_Setter_Array text_Setter2;
